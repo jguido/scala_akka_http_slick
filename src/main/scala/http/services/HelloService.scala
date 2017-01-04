@@ -1,13 +1,13 @@
-package services
+package http.services
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.headers.HttpOriginRange
 import akka.http.scaladsl.model.{HttpEntity, HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives._
+import app.config.Loggable
 import ch.megard.akka.http.cors.CorsDirectives._
 import ch.megard.akka.http.cors.CorsSettings
-import config.Loggable
-import domain.{Hello, HelloFormats}
+import http.protocol.{Hello, HelloFormats}
 
 trait HelloService extends HelloFormats with Loggable{
 

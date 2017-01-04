@@ -1,4 +1,4 @@
-package domain
+package http.protocol
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json.{DefaultJsonProtocol, JsString, JsValue, RootJsonFormat}

@@ -23,6 +23,10 @@ libraryDependencies ++= Seq(
   "com.jayway.restassured" % "rest-assured" % "2.9.0" % "test",
   "ch.qos.logback" % "logback-classic" % "1.1.7",
   "ch.megard" %% "akka-http-cors" % "0.1.8",
-  "net.logstash.logback" % "logstash-logback-encoder" % "4.5.1"
+  "net.logstash.logback" % "logstash-logback-encoder" % "4.5.1",
+  "com.typesafe.slick" %% "slick" % "3.0.0",
+  "org.flywaydb" % "flyway-core" % "3.1",
+  "org.scala-lang" % "scala-reflect" % "2.11.8",
+  "com.h2database" % "h2" % "1.3.175"
 
 )
