@@ -12,7 +12,7 @@ object Application extends App with HelloService with BootstrapActor{
   private val load: Config = ConfigFactory.load("application")
   val appConfig = new AppConfig(load)
 
-  val bindingFuture = Http().bindAndHandle(RouteResult.route2HandlerFlow(helloRoute), "0.0.0.0", 17849)
+  val bindingFuture = Http().bindAndHandle(RouteResult.route2HandlerFlow(helloRoute), "0.0.0.0", appConfig.httpConfig.port)
 }
 
 trait BootstrapActor {
