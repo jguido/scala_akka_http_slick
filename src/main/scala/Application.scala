@@ -1,6 +1,6 @@
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.server.RouteResult
+import akka.http.scaladsl.server.{Route, RouteResult}
 import akka.stream.ActorMaterializer
 import app.config.AppConfig
 import com.typesafe.config.{Config, ConfigFactory}
@@ -15,7 +15,9 @@ object Application extends App with HelloService with BootstrapActor with Databa
 
   DatabaseSupport.applyMigrate(appConfig.dbConfig)
 
-  val bindingFuture = Http().bindAndHandle(RouteResult.route2HandlerFlow(helloRoute), "0.0.0.0", appConfig.httpConfig.port)
+  val routes: Route = helloRoute
+
+  val bindingFuture = Http().bindAndHandle(RouteResult.route2HandlerFlow(routes), "0.0.0.0", appConfig.httpConfig.port)
 }
 
 trait BootstrapActor {

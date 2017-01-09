@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS `COUNTRIES` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(2) NOT NULL,
-  `taxe` double NOT NULL,
-  `currency` varchar(50) NOT NULL,
-  `symbol` varchar(5) DEFAULT NULL,
-  `shortCurrency` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(2) NOT NULL,
+  `TAX` double NOT NULL,
+  `CURRENCY` varchar(50) NOT NULL,
+  `SYMBOL` varchar(5) DEFAULT NULL,
+  `SHORT_CURRENCY` varchar(10) NOT NULL,
+  PRIMARY KEY (`ID`)
 );

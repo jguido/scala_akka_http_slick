@@ -1,5 +1,7 @@
 package db.models
 
+import java.nio.charset.Charset
+import java.security.MessageDigest
 import java.util.UUID
 
 import slick.lifted.MappedTo
@@ -28,4 +30,8 @@ object Guid {
     currentMirror.reflectClass(tt.tpe.typeSymbol.asClass).reflectConstructor(constructor)(UUID.randomUUID().toString).asInstanceOf[T]
   }
 
+}
+
+case class Credential(value: String) {
+  def hash: Array[Byte] = MessageDigest.getInstance("SHA-256").digest(value.getBytes(Charset.forName("UTF-8")))
 }

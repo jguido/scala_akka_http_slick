@@ -1,23 +1,19 @@
 package http.services
 
-import akka.actor.ActorSystem
-import akka.http.scaladsl.model.headers.HttpOriginRange
 import akka.http.scaladsl.model.{HttpEntity, HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives._
 import app.config.Loggable
 import ch.megard.akka.http.cors.CorsDirectives._
-import ch.megard.akka.http.cors.CorsSettings
 import http.protocol.{Hello, HelloFormats}
 
-trait HelloService extends HelloFormats with Loggable{
-
-  implicit val system: ActorSystem
-  val settings = CorsSettings.defaultSettings.copy(allowedOrigins = HttpOriginRange.*, allowCredentials = false)
+trait HelloService extends BaseService with  HelloFormats with Loggable{
 
   def helloRoute = cors(settings) {
     path("hello") {
-      parameter('name.?) { name =>
-        complete(HttpResponse(StatusCodes.OK, entity = HttpEntity(helloFormat.write(Hello(name.getOrElse("You"))).toString)))
+      get {
+        parameter('name.?) { name =>
+          complete(HttpResponse(StatusCodes.OK, entity = HttpEntity(helloFormat.write(Hello(name.getOrElse("You"))).toString)))
+        }
       }
     }
   }
